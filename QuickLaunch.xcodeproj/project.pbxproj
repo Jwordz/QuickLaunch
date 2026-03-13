@@ -67,6 +67,16 @@
 		79DED2012F644001003B03F4 /* QuickLaunchWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = QuickLaunchWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		79DED2142F644014003B03F4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 79DED2092F644009003B03F4 /* QuickLaunchWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		79DED1BA2F643D89003B03F4 /* QuickLaunch */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -85,6 +95,9 @@
 		};
 		79DED2002F644000003B03F4 /* QuickLaunchWidget */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				79DED2142F644014003B03F4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */,
+			);
 			path = QuickLaunchWidget;
 			sourceTree = "<group>";
 		};
