@@ -6,6 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		79DED1EA2F643DE4003B03F4 /* ShortcutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DED1E22F643DE2003B03F4 /* ShortcutData.swift */; };
+		79DED1EB2F643DE4003B03F4 /* ShortcutRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DED1E82F643DE2003B03F4 /* ShortcutRowView.swift */; };
+		79DED1EC2F643DE4003B03F4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DED1E72F643DE2003B03F4 /* ContentView.swift */; };
+		79DED1ED2F643DE4003B03F4 /* QuickLaunchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DED1E62F643DE2003B03F4 /* QuickLaunchApp.swift */; };
+		79DED1EE2F643DE4003B03F4 /* AppShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DED1E42F643DE2003B03F4 /* AppShortcut.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		79DED1C62F643D8B003B03F4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +35,11 @@
 		79DED1B82F643D89003B03F4 /* QuickLaunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickLaunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79DED1C52F643D8B003B03F4 /* QuickLaunchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickLaunchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		79DED1CF2F643D8B003B03F4 /* QuickLaunchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickLaunchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		79DED1E22F643DE2003B03F4 /* ShortcutData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutData.swift; sourceTree = "<group>"; };
+		79DED1E42F643DE2003B03F4 /* AppShortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppShortcut.swift; sourceTree = "<group>"; };
+		79DED1E62F643DE2003B03F4 /* QuickLaunchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLaunchApp.swift; sourceTree = "<group>"; };
+		79DED1E72F643DE2003B03F4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		79DED1E82F643DE2003B03F4 /* ShortcutRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +88,10 @@
 		79DED1AF2F643D89003B03F4 = {
 			isa = PBXGroup;
 			children = (
+				79DED1E32F643DE2003B03F4 /* Data */,
+				79DED1E52F643DE2003B03F4 /* Models */,
+				79DED1E62F643DE2003B03F4 /* QuickLaunchApp.swift */,
+				79DED1E92F643DE2003B03F4 /* Views */,
 				79DED1BA2F643D89003B03F4 /* QuickLaunch */,
 				79DED1C82F643D8B003B03F4 /* QuickLaunchTests */,
 				79DED1D22F643D8B003B03F4 /* QuickLaunchUITests */,
@@ -90,6 +107,31 @@
 				79DED1CF2F643D8B003B03F4 /* QuickLaunchUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		79DED1E32F643DE2003B03F4 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				79DED1E22F643DE2003B03F4 /* ShortcutData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		79DED1E52F643DE2003B03F4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				79DED1E42F643DE2003B03F4 /* AppShortcut.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		79DED1E92F643DE2003B03F4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				79DED1E72F643DE2003B03F4 /* ContentView.swift */,
+				79DED1E82F643DE2003B03F4 /* ShortcutRowView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +278,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79DED1EA2F643DE4003B03F4 /* ShortcutData.swift in Sources */,
+				79DED1EB2F643DE4003B03F4 /* ShortcutRowView.swift in Sources */,
+				79DED1EC2F643DE4003B03F4 /* ContentView.swift in Sources */,
+				79DED1ED2F643DE4003B03F4 /* QuickLaunchApp.swift in Sources */,
+				79DED1EE2F643DE4003B03F4 /* AppShortcut.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +452,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -437,6 +485,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
