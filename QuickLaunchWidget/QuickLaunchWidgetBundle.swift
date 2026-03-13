@@ -16,8 +16,10 @@ import SwiftUI
 @main
 struct QuickLaunchWidgetBundle: WidgetBundle {
     var body: some Widget {
-        // Register our Lock Screen widget.
-        // Add more widgets here (comma-separated) if you create them later.
+        // Lock Screen widgets (circular + rectangular)
         QuickLaunchLockScreenWidget()
+
+        // Home Screen / Today View widget (medium)
+        QuickLaunchHomeWidget()
     }
 }
