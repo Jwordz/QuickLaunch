@@ -1,6 +1,6 @@
 // QuickLaunch/Views/ShortcutRowView.swift
 // Purpose: A single row in the shortcut list.
-// Clean, editorial design — centred serif text, no chrome.
+// Shows a small SF Symbol icon and the app name.
 
 import SwiftUI
 
@@ -9,20 +9,27 @@ struct ShortcutRowView: View {
     let shortcut: AppShortcut
 
     var body: some View {
-        Text(shortcut.name)
-            .font(.system(.title2, design: .serif))
-            .fontWeight(.medium)
-            .foregroundStyle(.primary)
-            .frame(maxWidth: .infinity)         // Centre the text horizontally
-            .padding(.vertical, 18)
-            .contentShape(Rectangle())          // Full row is tappable
+        HStack(spacing: 14) {
+            // App icon — small and muted so the name stays prominent
+            Image(systemName: shortcut.iconName)
+                .font(.title3)
+                .foregroundStyle(.secondary)
+                .frame(width: 28)
+
+            // App name in a clean serif font
+            Text(shortcut.name)
+                .font(.system(.title3, design: .serif))
+                .fontWeight(.medium)
+                .foregroundStyle(.primary)
+        }
+        .padding(.vertical, 6)
     }
 }
 
 // MARK: - Preview
 
 #Preview {
-    VStack(spacing: 0) {
+    List {
         ShortcutRowView(shortcut: AppShortcut(
             name: "Obsidian",
             urlScheme: "obsidian://",
@@ -34,5 +41,4 @@ struct ShortcutRowView: View {
             iconName: "dumbbell.fill"
         ))
     }
-    .padding()
 }

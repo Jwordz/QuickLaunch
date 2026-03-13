@@ -1,54 +1,75 @@
 // QuickLaunch/Views/ContentView.swift
 // Purpose: The main screen of the app.
-// Shows a clean, editorial-style list of app shortcuts.
+// Shows a list of app shortcuts with drag-to-reorder, swipe-to-delete,
+// and an Add button to create new shortcuts.
 
 import SwiftUI
 
 struct ContentView: View {
 
-    let shortcuts: [AppShortcut] = sampleShortcuts
+    /// The shared store injected by QuickLaunchApp via .environmentObject.
+    @EnvironmentObject var store: ShortcutStore
+
+    /// Opens URLs (used to launch other apps via their URL schemes).
     @Environment(\.openURL) private var openURL
 
+    /// Controls whether the "Add App" sheet is showing.
+    @State private var showingAddSheet = false
+
     var body: some View {
-        VStack(spacing: 0) {
-
-            // MARK: - Header
-            // Custom title area with an editorial serif font.
-            VStack(spacing: 6) {
-                Text("QuickLaunch")
-                    .font(.system(.largeTitle, design: .serif))
-                    .fontWeight(.bold)
-                    .tracking(0.5)
-
-                // Thin decorative rule under the title
-                Rectangle()
-                    .frame(width: 32, height: 2)
-                    .foregroundStyle(.primary)
-            }
-            .padding(.top, 56)
-            .padding(.bottom, 36)
-
-            // MARK: - Shortcut List
-            ScrollView {
-                VStack(spacing: 0) {
-                    ForEach(shortcuts) { shortcut in
-                        Button {
-                            openApp(shortcut: shortcut)
-                        } label: {
-                            ShortcutRowView(shortcut: shortcut)
+        NavigationStack {
+            Group {
+                if store.shortcuts.isEmpty {
+                    // Empty state — shown when the user has deleted all shortcuts.
+                    ContentUnavailableView {
+                        Label("No Shortcuts", systemImage: "app.dashed")
+                    } description: {
+                        Text("Tap + to add your first app shortcut.")
+                    }
+                } else {
+                    // Main list — supports drag-to-reorder and swipe-to-delete.
+                    List {
+                        ForEach(store.shortcuts) { shortcut in
+                            Button {
+                                openApp(shortcut: shortcut)
+                            } label: {
+                                ShortcutRowView(shortcut: shortcut)
+                            }
+                            .buttonStyle(.plain)
                         }
-                        .buttonStyle(ShortcutButtonStyle())
+                        // .onMove enables drag-and-drop reordering in edit mode.
+                        .onMove { store.move(from: $0, to: $1) }
+                        // .onDelete enables the swipe-left-to-delete gesture.
+                        .onDelete { store.delete(at: $0) }
+                    }
+                    .listStyle(.plain)
+                }
+            }
+            .navigationTitle("QuickLaunch")
+            .toolbar {
+                // Edit button — toggles edit mode (shows drag handles + delete buttons)
+                ToolbarItem(placement: .topBarLeading) {
+                    EditButton()
+                }
+                // Add button — opens the Add App sheet
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showingAddSheet = true
+                    } label: {
+                        Image(systemName: "plus")
                     }
                 }
-                .padding(.bottom, 40)
+            }
+            .sheet(isPresented: $showingAddSheet) {
+                AddShortcutView()
+                    .environmentObject(store)
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(.systemBackground))
     }
 
     // MARK: - Actions
 
+    /// Opens the target app using its URL scheme.
     private func openApp(shortcut: AppShortcut) {
         guard let url = URL(string: shortcut.urlScheme) else {
             print("⚠️ Invalid URL scheme: \(shortcut.urlScheme)")
@@ -62,19 +83,9 @@ struct ContentView: View {
     }
 }
 
-// MARK: - Custom Button Style
-// Gives a subtle fade when the user presses a row.
-
-struct ShortcutButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .opacity(configuration.isPressed ? 0.4 : 1.0)
-            .animation(.easeOut(duration: 0.15), value: configuration.isPressed)
-    }
-}
-
 // MARK: - Preview
 
 #Preview {
     ContentView()
+        .environmentObject(ShortcutStore())
 }

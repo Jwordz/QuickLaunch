@@ -1,6 +1,6 @@
 // QuickLaunch/QuickLaunchApp.swift
 // Purpose: Main entry point for the QuickLaunch app.
-// This file tells iOS where the app starts and what the first screen is.
+// Creates the ShortcutStore and injects it into the view hierarchy.
 
 import SwiftUI
 
@@ -8,12 +8,16 @@ import SwiftUI
 @main
 struct QuickLaunchApp: App {
 
-    /// `body` defines the app's scene structure.
-    /// A WindowGroup is the standard container for an iOS app's main window.
+    /// Create the store once here. It lives for the entire app lifecycle.
+    /// @StateObject ensures SwiftUI creates it only once and keeps it alive.
+    @StateObject private var store = ShortcutStore()
+
     var body: some Scene {
         WindowGroup {
-            // ContentView is the first screen the user sees when the app opens.
             ContentView()
+                // Inject the store so every child view can access it
+                // via @EnvironmentObject var store: ShortcutStore
+                .environmentObject(store)
         }
     }
 }

@@ -32,15 +32,15 @@ struct HomeWidgetEntry: TimelineEntry {
 struct HomeWidgetProvider: TimelineProvider {
 
     func placeholder(in context: Context) -> HomeWidgetEntry {
-        HomeWidgetEntry(date: .now, shortcuts: sampleShortcuts)
+        HomeWidgetEntry(date: .now, shortcuts: loadSharedShortcuts())
     }
 
     func getSnapshot(in context: Context, completion: @escaping (HomeWidgetEntry) -> Void) {
-        completion(HomeWidgetEntry(date: .now, shortcuts: sampleShortcuts))
+        completion(HomeWidgetEntry(date: .now, shortcuts: loadSharedShortcuts()))
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<HomeWidgetEntry>) -> Void) {
-        let entry = HomeWidgetEntry(date: .now, shortcuts: sampleShortcuts)
+        let entry = HomeWidgetEntry(date: .now, shortcuts: loadSharedShortcuts())
         // .never — our data doesn't change. Change to .after(Date) if you
         // later load shortcuts dynamically.
         completion(Timeline(entries: [entry], policy: .never))
@@ -153,5 +153,5 @@ struct QuickLaunchHomeWidget: Widget {
 #Preview("Medium", as: .systemMedium) {
     QuickLaunchHomeWidget()
 } timeline: {
-    HomeWidgetEntry(date: .now, shortcuts: sampleShortcuts)
+    HomeWidgetEntry(date: .now, shortcuts: loadSharedShortcuts())
 }

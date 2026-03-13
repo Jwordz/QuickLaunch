@@ -52,7 +52,7 @@ struct LockScreenProvider: TimelineProvider {
     func placeholder(in context: Context) -> LockScreenEntry {
         LockScreenEntry(
             date: .now,
-            shortcuts: Array(sampleShortcuts.prefix(3))
+            shortcuts: Array(loadSharedShortcuts().prefix(3))
         )
     }
 
@@ -61,17 +61,17 @@ struct LockScreenProvider: TimelineProvider {
     func getSnapshot(in context: Context, completion: @escaping (LockScreenEntry) -> Void) {
         let entry = LockScreenEntry(
             date: .now,
-            shortcuts: Array(sampleShortcuts.prefix(3))
+            shortcuts: Array(loadSharedShortcuts().prefix(3))
         )
         completion(entry)
     }
 
     /// Timeline: the main data source. Returns an array of entries and a refresh policy.
-    /// Since our shortcuts are hardcoded, we return one entry and .never refresh.
+    /// Reads from the shared App Group so it reflects user changes.
     func getTimeline(in context: Context, completion: @escaping (Timeline<LockScreenEntry>) -> Void) {
         let entry = LockScreenEntry(
             date: .now,
-            shortcuts: Array(sampleShortcuts.prefix(3))
+            shortcuts: Array(loadSharedShortcuts().prefix(3))
         )
         // .never means WidgetKit won't ask for new data automatically.
         // If you later load shortcuts from a database, change this to
@@ -201,11 +201,11 @@ struct QuickLaunchLockScreenWidget: Widget {
 #Preview("Circular", as: .accessoryCircular) {
     QuickLaunchLockScreenWidget()
 } timeline: {
-    LockScreenEntry(date: .now, shortcuts: Array(sampleShortcuts.prefix(3)))
+    LockScreenEntry(date: .now, shortcuts: Array(loadSharedShortcuts().prefix(3)))
 }
 
 #Preview("Rectangular", as: .accessoryRectangular) {
     QuickLaunchLockScreenWidget()
 } timeline: {
-    LockScreenEntry(date: .now, shortcuts: Array(sampleShortcuts.prefix(3)))
+    LockScreenEntry(date: .now, shortcuts: Array(loadSharedShortcuts().prefix(3)))
 }

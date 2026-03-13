@@ -15,6 +15,10 @@
 		79DED2042F644004003B03F4 /* AppShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DED1E42F643DE2003B03F4 /* AppShortcut.swift */; };
 		79DED2052F644005003B03F4 /* ShortcutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DED1E22F643DE2003B03F4 /* ShortcutData.swift */; };
 		79DED2082F644008003B03F4 /* QuickLaunchWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 79DED2012F644001003B03F4 /* QuickLaunchWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		79DED2212F644021003B03F4 /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DED2202F644020003B03F4 /* SharedDefaults.swift */; };
+		79DED2222F644022003B03F4 /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DED2202F644020003B03F4 /* SharedDefaults.swift */; };
+		79DED2242F644024003B03F4 /* ShortcutStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DED2232F644023003B03F4 /* ShortcutStore.swift */; };
+		79DED2262F644026003B03F4 /* AddShortcutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DED2252F644025003B03F4 /* AddShortcutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,10 +69,13 @@
 		79DED1E72F643DE2003B03F4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		79DED1E82F643DE2003B03F4 /* ShortcutRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutRowView.swift; sourceTree = "<group>"; };
 		79DED2012F644001003B03F4 /* QuickLaunchWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = QuickLaunchWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		79DED2202F644020003B03F4 /* SharedDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDefaults.swift; sourceTree = "<group>"; };
+		79DED2232F644023003B03F4 /* ShortcutStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutStore.swift; sourceTree = "<group>"; };
+		79DED2252F644025003B03F4 /* AddShortcutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShortcutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		79DED2142F644014003B03F4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		79DED2142F644014003B03F4 /* Exceptions for "QuickLaunchWidget" folder in "QuickLaunchWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -96,7 +103,7 @@
 		79DED2002F644000003B03F4 /* QuickLaunchWidget */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				79DED2142F644014003B03F4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */,
+				79DED2142F644014003B03F4 /* Exceptions for "QuickLaunchWidget" folder in "QuickLaunchWidgetExtension" target */,
 			);
 			path = QuickLaunchWidget;
 			sourceTree = "<group>";
@@ -164,7 +171,9 @@
 		79DED1E32F643DE2003B03F4 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				79DED2202F644020003B03F4 /* SharedDefaults.swift */,
 				79DED1E22F643DE2003B03F4 /* ShortcutData.swift */,
+				79DED2232F644023003B03F4 /* ShortcutStore.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -180,6 +189,7 @@
 		79DED1E92F643DE2003B03F4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				79DED2252F644025003B03F4 /* AddShortcutView.swift */,
 				79DED1E72F643DE2003B03F4 /* ContentView.swift */,
 				79DED1E82F643DE2003B03F4 /* ShortcutRowView.swift */,
 			);
@@ -370,6 +380,9 @@
 				79DED1EC2F643DE4003B03F4 /* ContentView.swift in Sources */,
 				79DED1ED2F643DE4003B03F4 /* QuickLaunchApp.swift in Sources */,
 				79DED1EE2F643DE4003B03F4 /* AppShortcut.swift in Sources */,
+				79DED2212F644021003B03F4 /* SharedDefaults.swift in Sources */,
+				79DED2242F644024003B03F4 /* ShortcutStore.swift in Sources */,
+				79DED2262F644026003B03F4 /* AddShortcutView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +406,7 @@
 			files = (
 				79DED2042F644004003B03F4 /* AppShortcut.swift in Sources */,
 				79DED2052F644005003B03F4 /* ShortcutData.swift in Sources */,
+				79DED2222F644022003B03F4 /* SharedDefaults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,6 +556,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = QuickLaunch/QuickLaunch.entitlements;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -575,6 +590,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = QuickLaunch/QuickLaunch.entitlements;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -691,8 +707,8 @@
 		79DED20D2F64400D003B03F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4F24B8Q93A;
@@ -720,8 +736,8 @@
 		79DED20E2F64400E003B03F4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4F24B8Q93A;
